@@ -5,6 +5,7 @@ namespace App\Providers;
 use Faker\Provider\Fakenews;
 use Faker\Provider\Fakenewssource;
 use Illuminate\Support\ServiceProvider;
+use Smknstd\FakerPicsumImages\FakerPicsumImagesProvider;
 
 class FakerServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,8 @@ class FakerServiceProvider extends ServiceProvider
             $faker = \Faker\Factory::create();
             $faker->addProvider(new Fakenews($faker));
             $faker->addProvider(new Fakenewssource($faker));
+
+            $faker->addProvider(new FakerPicsumImagesProvider($faker));
             return $faker;
         });
     }
