@@ -1,4 +1,5 @@
 import Index from "../components/index/Index";
+import NewsCreate from "../components/news/forms/NewsCreate";
 import NewsIndex from "../components/news/index/NewsIndex";
 
 function route(name, Component) {
@@ -11,6 +12,7 @@ function route(name, Component) {
 const routes = {
   "/": route("Home", Index),
   "/news": route("News", NewsIndex),
+  "/news/create": route("Add News", NewsCreate),
 };
 
 export function mapRoutes(callbackfn) {
