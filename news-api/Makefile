@@ -5,7 +5,7 @@ setup:
 	composer i
 	cp .env.example .env
 	php artisan key:generate
-    php artisan migrate
+	php artisan migrate
 	php artisan storage$(:)link
 	php artisan db:seed NewsSeeder
 
@@ -17,6 +17,6 @@ fresh:
 	rm -fr storage/app/public/images
 
 seed:
-	php artisan db$(:)seed NewsApp
+	php artisan db$(:)seed NewsSeeder
 
 .PHONY: art fresh
