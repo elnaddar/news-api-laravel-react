@@ -1,5 +1,5 @@
 import Index from "../components/index/Index";
-import NewsIndex from "../components/news/NewsIndex";
+import NewsIndex from "../components/news/index/NewsIndex";
 
 function route(name, Component) {
   return {

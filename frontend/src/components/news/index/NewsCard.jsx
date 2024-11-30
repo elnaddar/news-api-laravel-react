@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { API_BASE } from "../../shared/constants";
+import { API_BASE } from "../../../shared/constants";
 
 function NewsCard(props) {
   const { data: article } = props;

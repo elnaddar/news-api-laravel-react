@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap";
 import routes, { mapRoutes } from "./shared/routes";
-import NewsShow from "./components/news/NewsShow";
+import NewsShow from "./components/news/show/NewsShow";
 
 function App() {
   return (

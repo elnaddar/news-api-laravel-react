@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API_BASE, NEWS_API } from "../../shared/constants";
+import { API_BASE, NEWS_API } from "../../../shared/constants";
 import { useParams } from "react-router-dom";
 
 function NewsShow() {

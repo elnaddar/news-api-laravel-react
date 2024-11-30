@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NewsCard from "./NewsCard";
-import { NEWS_API } from "../../shared/constants";
+import { NEWS_API } from "../../../shared/constants";
 
 function NewsIndexViewer(props) {
   const [articles, setArticles] = useState([]);
