@@ -16,7 +16,7 @@ class NewsController extends Controller
         $pageSize = $request->page_size ?? 20;
         $pageNumber = $request->page ?? 1;
 
-        $news = News::query()->latest()->paginate(
+        $news = News::query()->latest("updated_at")->paginate(
             perPage: $pageSize,
             page: $pageNumber
         );
@@ -29,7 +29,25 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "title" => "required|min:10|unique:news",
+            "content" => "required",
+            "source" => "required",
+            "author" => "required"
+        ]);
+
+        $news = News::create([
+            "title" => $request->title,
+            "content" => $request->content,
+            "source" => $request->source,
+            "author" => $request->author,
+            "image" =>  $request->image
+        ]);
+
+        return response()->json([
+            "message" => "Added Successfully",
+            "id" => $news->id
+        ], 201);
     }
 
     /**
