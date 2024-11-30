@@ -10,6 +10,7 @@ function NewsShow() {
   const imagePath = API_BASE + article.image;
 
   useEffect(() => {
+    setLoading(true);
     const fetchData = async () => {
       const response = await axios.get(NEWS_API + news);
       setArticle(response.data.data);
@@ -17,7 +18,7 @@ function NewsShow() {
     };
 
     fetchData();
-  });
+  }, [news]);
 
   if (loading) {
     return <div>Loading</div>;
