@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { API_BASE } from "../../shared/constants";
 
 function NewsCard(props) {
   const { data: article } = props;
-  const imagePath = "http://127.0.0.1:8000" + article.image;
+  const imagePath = API_BASE + article.image;
   const articleUrl = "/news/" + article.id;
 
   return (

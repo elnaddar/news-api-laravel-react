@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import NewsCard from "./NewsCard";
+import { NEWS_API } from "../../shared/constants";
 
 function NewsIndexViewer(props) {
   const [articles, setArticles] = useState([]);
@@ -10,7 +11,7 @@ function NewsIndexViewer(props) {
   useEffect(() => {
     setLoading(true);
     const fetchNews = async () => {
-      const response = await axios.get("http://127.0.0.1:8000/api/news", {
+      const response = await axios.get(NEWS_API, {
         params: params,
       });
       setArticles(response.data.data);
