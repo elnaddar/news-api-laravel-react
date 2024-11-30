@@ -81,7 +81,6 @@ or install everything yourself.
 
    The API will be accessible at `http://127.0.0.1:8000`.
 
-<!-- 
 ### 3. Set Up React Frontend
 
 1. Navigate to the `frontend` directory:
@@ -93,38 +92,55 @@ or install everything yourself.
    ```bash
    npm install
    ```
+   
+   or
+
+   ```bash
+   bun install
+   ```
 
 3. Start the development server:
    ```bash
-   npm start
+   npm run dev
    ```
 
-   The React app will run at `http://localhost:3000`.
+   or
+
+   ```bash
+   bun run dev
+   ```
+
+   The React app will run at `http://localhost:5173/`.
 
 ## API Endpoints
 
 Here are the API routes you can test:
 
-| Method | Endpoint           | Description                 |
-|--------|--------------------|-----------------------------|
-| GET    | `/api/news`        | Fetch all news articles     |
-| POST   | `/api/news`        | Create a new article        |
-| GET    | `/api/news/{id}`   | Fetch a single article      |
-| PUT    | `/api/news/{id}`   | Update an article           |
-| DELETE | `/api/news/{id}`   | Delete an article           |
+| Method | Endpoint           | Description                                                     |
+|--------|--------------------|-----------------------------------------------------------------|
+| GET    | `/api/news`        | Fetch all news articles (supports optional `page` and `page_size` query parameters) |
+| POST   | `/api/news`        | Create a new article                                            |
+| GET    | `/api/news/{id}`   | Fetch a single article                                          |
+| PUT    | `/api/news/{id}`   | Update an article                                               |
+| DELETE | `/api/news/{id}`   | Delete an article                                               |
 
 ### Example Request
 
 To create a news article:
 ```json
-POST /api/news
-Content-Type: application/json
+// POST /api/news
+// Content-Type: application/json
 
 {
   "title": "Breaking News!",
-  "content": "This is the content of the news article."
+  "content": "This is the content of the news article.",
+   "source": "Self Source",
+   "author": "Ahmed Mahdy",
+   "image": "/storage/images/87a93ec76ce20a3dd1ca43d7c0acd1d9.jpg"
 }
 ```
+
+<!-- 
 
 ## React Integration
 
