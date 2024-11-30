@@ -29,46 +29,58 @@ cd news-api-laravel-react
 
 ### 2. Set Up Laravel API
 
-1. Navigate to the `news-api` directory:
-   ```bash
-   cd news-api
-   ```
+Navigate to the `news-api` directory:
+```bash
+cd news-api
+```
 
-2. Install dependencies:
+#### 2.1. Using `Makefile`
+
+I have create a `Makefile` to help setup laravel api, you can just use:
+```bash
+make setup
+```
+
+or install everything yourself.
+
+#### 2.2. Install everything yourself
+
+1. Install dependencies:
    ```bash
    composer install
    ```
 
-3. Copy the `.env` file and configure the database:
+2. Copy the `.env` file and configure the database:
    ```bash
    cp .env.example .env
    ```
 
-4. Generate an application key:
+3. Generate an application key:
    ```bash
    php artisan key:generate
    ```
 
-5. Run migrations to set up the database:
+4. Run migrations to set up the database:
    ```bash
    php artisan migrate
    ```
-6. Link the storage so you can retrieve the data:
+5. Link the storage so you can retrieve the data:
    ```bash
    php artisan storage:link
    ```
 
-7. Seed the database (optional):
+6. Seed the database (optional):
    ```bash
    php artisan db:seed NewsSeeder
    ```
 
-8. Start the Laravel development server:
+7. Start the Laravel development server:
    ```bash
    php artisan serve
    ```
 
    The API will be accessible at `http://127.0.0.1:8000`.
+
 <!-- 
 ### 3. Set Up React Frontend
 
