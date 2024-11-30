@@ -6,7 +6,7 @@ function NewsIndexViewer(props) {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const { params } = props;
-  
+
   useEffect(() => {
     setLoading(true);
     const fetchNews = async () => {
@@ -17,7 +17,7 @@ function NewsIndexViewer(props) {
       setLoading(false);
     };
     fetchNews();
-  }, []);
+  }, [params]);
 
   if (loading) {
     return <div>Loading</div>;
