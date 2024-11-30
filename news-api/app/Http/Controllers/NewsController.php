@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\NewsResource;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsController extends Controller
 {
@@ -85,9 +86,18 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
+        $imagePath = $news->image;
         $news->deleteOrFail();
 
-        response()->json([
+        // Check if image used in another News Post
+        $news = News::where("image", $imagePath)->get();
+        if ($news->isEmpty()) {
+            $imagePathSeparated = explode("/", $imagePath);
+            $imagePathToBeDeleted = "images/" . end($imagePathSeparated);
+            Storage::disk("public")->delete($imagePathToBeDeleted);
+        }
+
+        return response()->json([
             "message" => "Destroyed Successfully",
         ], 201);
     }
