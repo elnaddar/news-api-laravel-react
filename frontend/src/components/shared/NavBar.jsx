@@ -1,4 +1,5 @@
-import routes from "../../shared/routes.jsx";
+import { Link } from "react-router-dom";
+import { mapRoutes } from "../../shared/routes.jsx";
 
 function NavBar() {
   return (
@@ -20,13 +21,13 @@ function NavBar() {
         </button>
         <div className="collapse navbar-collapse" id="collapsibleNavId">
           <ul className="navbar-nav me-auto mt-2 mt-lg-0">
-            {Object.entries(routes).map(([path, { name }]) => {
+            {mapRoutes(([path, { name }]) => {
               return (
                 <li key={path} className="nav-item">
-                  <a className="nav-link" href={path}>
+                  <Link className="nav-link" to={path}>
                     {name}
                     {/* <span className="visually-hidden">(current)</span> */}
-                  </a>
+                  </Link>
                 </li>
               );
             })}

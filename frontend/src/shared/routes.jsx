@@ -7,4 +7,8 @@ const routes = {
   },
 };
 
+export function mapRoutes(callbackfn) {
+  return Object.entries(routes).map(callbackfn);
+}
+
 export default routes;
