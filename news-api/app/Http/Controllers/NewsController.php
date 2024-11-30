@@ -14,6 +14,11 @@ class NewsController extends Controller
      */
     public function index(Request $request)
     {
+        $request->validate([
+            "page" => "integer|min:1",
+            "page_size" => "integer|min:5|max:50"
+        ]);
+        
         $pageSize = $request->page_size ?? 20;
         $pageNumber = $request->page ?? 1;
 
