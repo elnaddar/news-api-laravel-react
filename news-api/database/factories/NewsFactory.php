@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class NewsFactory extends Factory
 {
-    const FAKER_IMAGES_PATH = "images";
+    const FAKER_IMAGES_PATH = "images" . "/";
     const IMAGES_STORAGE_PATH = "app/public/" . NewsFactory::FAKER_IMAGES_PATH;
 
     /**
@@ -24,18 +24,20 @@ class NewsFactory extends Factory
         Storage::disk("public")->makeDirectory($this::FAKER_IMAGES_PATH);
 
         // Download fake image and store it
-        $fakerImage = $this->faker->image(
+        $fakeImage = $this->faker->image(
             storage_path($this::IMAGES_STORAGE_PATH),
             800,
-            600
+            600,
+            false
         );
-
         return [
             "title" => $this->faker->headline(),
             "source" => $this->faker->NewssourceName(),
             "author" => $this->faker->name(),
             "content" => $this->faker->realText(1000),
-            "image" => $this::IMAGES_STORAGE_PATH . basename($fakerImage)
+            "image" => "/storage/"
+                . $this::FAKER_IMAGES_PATH
+                . basename($fakeImage)
         ];
     }
 }
