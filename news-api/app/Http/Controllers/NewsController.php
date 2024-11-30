@@ -55,7 +55,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        return new NewsResource($news);
     }
 
     /**
@@ -63,7 +63,21 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $request->validate([
+            "title" => "min:10|unique:news",
+        ]);
+
+        $news->updateOrFail([
+            "title" => $request->title ?? $news->title,
+            "content" => $request->content ?? $news->content,
+            "source" => $request->source ?? $news->source,
+            "author" => $request->author ?? $news->author,
+            "image" =>  $request->imag ?? $news->image
+        ]);
+
+        return response()->json([
+            "message" => "Updated Successfully",
+        ], 201);
     }
 
     /**
@@ -71,6 +85,10 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $news->deleteOrFail();
+
+        response()->json([
+            "message" => "Destroyed Successfully",
+        ], 201);
     }
 }
