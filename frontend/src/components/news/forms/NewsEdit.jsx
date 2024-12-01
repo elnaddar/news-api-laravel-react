@@ -3,6 +3,7 @@ import { NEWS_API } from "../../../shared/constants";
 import NewsForm from "./NewsForm";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import DeleteNews from "./DeleteNews";
 
 function NewsEdit() {
   const { news } = useParams();
@@ -27,6 +28,14 @@ function NewsEdit() {
     });
   };
 
+  const handleFormDelete = async function () {
+    return await axios.delete(END_POINT, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
   if (loading) {
     return <div>Loading</div>;
   }
@@ -38,6 +47,7 @@ function NewsEdit() {
         successMessage="Updated successfully"
         onFormSubmit={handleFormSubmit}
       />
+      <DeleteNews onFormSubmit={handleFormDelete} endpoint={END_POINT} />
     </div>
   );
 }
