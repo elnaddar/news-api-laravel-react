@@ -28,9 +28,13 @@ function NewsShow() {
     <div className="container mt-4">
       <h1 className="display-1 text-center mb-5">{article.title}</h1>
       <div>
-        <div className="mb-4 text-center">
-          <img src={imagePath} className="img-fluid rounded-top" alt="" />
-        </div>
+        {article.image ? (
+          <div className="mb-4 text-center">
+            <img src={imagePath} className="img-fluid rounded-top" alt="" />
+          </div>
+        ) : (
+          ""
+        )}
 
         <p>{article.content}</p>
       </div>
