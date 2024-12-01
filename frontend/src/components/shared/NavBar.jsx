@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { mapRoutes } from "../../shared/routes.jsx";
+import { useContext } from "react";
+import { ThemeContext } from "../../context/ThemeContext.jsx";
 
 function NavBar() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-light">
+    <nav className={`navbar navbar-expand-sm navbar-${theme} bg-${theme}`}>
       <div className="container">
         <a className="navbar-brand" href="#">
           News App
@@ -31,6 +34,11 @@ function NavBar() {
                 </li>
               );
             })}
+            <li className="nav-item">
+              <button className="nav-link" onClick={toggleTheme}>
+                Toggle Theme
+              </button>
+            </li>
           </ul>
         </div>
       </div>
