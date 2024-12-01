@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_BASE, NEWS_API } from "../../../shared/constants";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 function NewsShow() {
   const [article, setArticle] = useState({});
@@ -37,6 +37,10 @@ function NewsShow() {
         )}
 
         <p>{article.content}</p>
+        <hr />
+        <Link to={"/news/" + news + "/edit"} className="btn btn-primary">
+          Edit Article
+        </Link>
       </div>
     </div>
   );
