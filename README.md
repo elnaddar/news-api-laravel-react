@@ -37,7 +37,7 @@ cd news-api
 
 #### 2.1. Using `Makefile`
 
-I have create a `Makefile` to help setup laravel api, you can just use:
+I have created a `Makefile` to help set up the Laravel API, you can just use:
 
 ```bash
 make setup
@@ -134,6 +134,14 @@ Here are the API routes you can test:
 | GET    | `/api/news/{id}` | Fetch a single article                                                              |
 | PUT    | `/api/news/{id}` | Update an article                                                                   |
 | DELETE | `/api/news/{id}` | Delete an article                                                                   |
+
+### Swagger Documentation
+
+The API is documented using Swagger. You can explore the API and test the endpoints interactively via the Swagger UI:
+
+📄 **Swagger Documentation URL:** [http://127.0.0.1:8000/docs/api](http://127.0.0.1:8000/docs/api)
+
+This documentation provides detailed information about each endpoint, including request parameters, response structure, and examples.
 
 ### Example Request
 
