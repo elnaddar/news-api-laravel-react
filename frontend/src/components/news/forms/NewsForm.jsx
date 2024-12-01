@@ -5,23 +5,26 @@ function NewsForm(props) {
   const defaults = props.defaults ?? {};
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [responseData, setResponseData] = useState({});
+  const [response, setResponse] = useState({});
+  const responseStatus = response.status;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsSubmitting(true);
-    const response = await props.onFormSubmit(event);
-    setResponseData(response.data);
-    event.target.reset();
+    const res = await props.onFormSubmit(event);
+    setResponse(res);
+    if (Object.keys(defaults).length === 0) {
+      event.target.reset();
+    }
     setIsSubmitting(false);
   };
 
   const handleAlertClose = () => {
-    setResponseData({});
+    setResponse({});
   };
   return (
     <>
-      {responseData.id ? (
+      {responseStatus == 201 ? (
         <div
           className="alert alert-success mb-5 alert-dismissible fade show"
           role="alert"
@@ -35,7 +38,9 @@ function NewsForm(props) {
           ></button>
           {props.successMessage + " "}
           <strong>
-            <Link to={"/news/" + responseData.id}>Go To Post</Link>
+            <Link to={"/news/" + (response.data.id ?? defaults.id)}>
+              Go To Post
+            </Link>
           </strong>
         </div>
       ) : (
