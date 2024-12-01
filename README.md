@@ -30,6 +30,7 @@ cd news-api-laravel-react
 ### 2. Set Up Laravel API
 
 Navigate to the `news-api` directory:
+
 ```bash
 cd news-api
 ```
@@ -37,6 +38,7 @@ cd news-api
 #### 2.1. Using `Makefile`
 
 I have create a `Makefile` to help setup laravel api, you can just use:
+
 ```bash
 make setup
 ```
@@ -46,16 +48,19 @@ or install everything yourself.
 #### 2.2. Install everything yourself
 
 1. Install dependencies:
+
    ```bash
    composer install
    ```
 
 2. Copy the `.env` file and configure the database:
+
    ```bash
    cp .env.example .env
    ```
 
 3. Generate an application key:
+
    ```bash
    php artisan key:generate
    ```
@@ -65,16 +70,19 @@ or install everything yourself.
    php artisan migrate
    ```
 5. Link the storage so you can retrieve the data:
+
    ```bash
    php artisan storage:link
    ```
 
 6. Seed the database (optional):
+
    ```bash
    php artisan db:seed NewsSeeder
    ```
 
 7. Start the Laravel development server:
+
    ```bash
    php artisan serve
    ```
@@ -84,15 +92,17 @@ or install everything yourself.
 ### 3. Set Up React Frontend
 
 1. Navigate to the `frontend` directory:
+
    ```bash
    cd ../frontend
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
-   
+
    or
 
    ```bash
@@ -100,6 +110,7 @@ or install everything yourself.
    ```
 
 3. Start the development server:
+
    ```bash
    npm run dev
    ```
@@ -116,17 +127,18 @@ or install everything yourself.
 
 Here are the API routes you can test:
 
-| Method | Endpoint           | Description                                                     |
-|--------|--------------------|-----------------------------------------------------------------|
-| GET    | `/api/news`        | Fetch all news articles (supports optional `page` and `page_size` query parameters) |
-| POST   | `/api/news`        | Create a new article                                            |
-| GET    | `/api/news/{id}`   | Fetch a single article                                          |
-| PUT    | `/api/news/{id}`   | Update an article                                               |
-| DELETE | `/api/news/{id}`   | Delete an article                                               |
+| Method | Endpoint         | Description                                                                         |
+| ------ | ---------------- | ----------------------------------------------------------------------------------- |
+| GET    | `/api/news`      | Fetch all news articles (supports optional `page` and `page_size` query parameters) |
+| POST   | `/api/news`      | Create a new article                                                                |
+| GET    | `/api/news/{id}` | Fetch a single article                                                              |
+| PUT    | `/api/news/{id}` | Update an article                                                                   |
+| DELETE | `/api/news/{id}` | Delete an article                                                                   |
 
 ### Example Request
 
 To create a news article:
+
 ```json
 // POST /api/news
 // Content-Type: application/json
@@ -134,30 +146,30 @@ To create a news article:
 {
   "title": "Breaking News!",
   "content": "This is the content of the news article.",
-   "source": "Self Source",
-   "author": "Ahmed Mahdy",
-   "image": "/storage/images/87a93ec76ce20a3dd1ca43d7c0acd1d9.jpg"
+  "source": "Self Source",
+  "author": "Ahmed Mahdy",
+  "image": "/storage/images/87a93ec76ce20a3dd1ca43d7c0acd1d9.jpg"
 }
 ```
-
-<!-- 
 
 ## React Integration
 
 In the React app, API requests are made using **Axios**. Example usage:
 
 ```javascript
-import axios from 'axios';
+import axios from "axios";
 
 const fetchNews = async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8000/api/news');
+    const response = await axios.get("http://127.0.0.1:8000/api/news");
     console.log(response.data);
   } catch (error) {
-    console.error('Error fetching news:', error);
+    console.error("Error fetching news:", error);
   }
 };
 ```
+
+<!--
 
 ## Authentication (Optional)
 
